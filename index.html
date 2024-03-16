@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universe</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding:0;
+            cursor: none;
+            box-sizing: border-box;
+        }
+        body
+        {
+            background: black;
+        }
+        .innerCircle, .outerCircle
+        {
+            position: fixed;
+            top: 4%;
+            left: 2%;
+            transform: translate(-50%, -50%); /*We translated it to make the cursor at the center of the div. By default cursor would be at top left as we are measuring the position of the div wrt the top left corner*/
+            z-index: 1;
+            pointer-events: none; /*So that the custom element does not react to the cursor event and the lower element does*/
+        }
+        .innerCircle
+        {
+            display: inline-block;
+            height: 4px;
+            width: 4px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0px 0px 5px 1px whitesmoke;
+        }
+        .outerCircle
+        {
+            display: inline-block;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0px 0px 4px 1px whitesmoke;
+        }
+        /* Sun Codes */
+        .sunWhite
+        {
+            width: 25%;
+            border-radius: 50%;
+            position: fixed;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(19, 18, 18, 1);
+
+            transition: box-shadow 8s ease 0s;
+        }
+        .sunWhite:after { content: ""; display: block; padding-top: 100%; }
+
+        .sunGreen
+        {
+            width: 18%;
+            border-radius: 50%;
+            position: fixed;
+            top: 70vh;
+            left: 85vw;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(19, 18, 18, 1);
+
+            transition: box-shadow 8s ease 0s;
+        }
+        .sunGreen:after { content: ""; display: block; padding-top: 100%; }
+
+        .sunRed
+        {
+            width: 15%;
+            border-radius: 50%;
+            position: fixed;
+            top: 20vh;
+            left: 15vw;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(19, 18, 18, 1);
+
+            transition: box-shadow 8s ease 0s;
+        }
+        .sunRed:after { content: ""; display: block; padding-top: 100%; }
+
+        .sunPlum
+        {
+            width: 12%;
+            border-radius: 50%;
+            position: fixed;
+            top: 70vh;
+            left: 10vw;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(19, 18, 18, 1);
+
+            transition: box-shadow 8s ease 0s;
+        }
+        .sunPlum:after { content: ""; display: block; padding-top: 100%; }
+
+        .sunSilver
+        {
+            width: 6%;
+            border-radius: 50%;
+            position: fixed;
+            top: 70vh;
+            left: 30vw;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(19, 18, 18, 1);
+
+            transition: box-shadow 8s ease 0s;
+        }
+        .sunSilver:after { content: ""; display: block; padding-top: 100%; }
+
+        .sunBlue
+        {
+            width: 8%;
+            border-radius: 50%;
+            position: fixed;
+            top: 13vh;
+            left: 70vw;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(19, 18, 18, 1);
+
+            transition: box-shadow 8s ease 0s;
+        }
+        .sunBlue:after { content: ""; display: block; padding-top: 100%; }
+
+        .sunGolden
+        {
+            width: 10%;
+            border-radius: 50%;
+            position: fixed;
+            top: 15vh;
+            left: 90vw;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgb(19, 18, 18, 1);
+
+            transition: box-shadow 8s ease 0s;
+        }
+        .sunGolden:after { content: ""; display: block; padding-top: 100%; }
+
+    </style>
+</head>
+<body>
+    <!-- Code For Cursor -->
+    <div class="innerCircle" inner-circle></div>
+    <div class="outerCircle" outer-circle></div>
+    
+    <!-- Code For Suns -->
+    <div onclick="showWhiteSun()" id="sunWhite" class="sunWhite"></div>
+    <div onclick="showGreenSun()" id="sunGreen" class="sunGreen"></div>
+    <div onclick="showRedSun()" id="sunRed" class="sunRed"></div>
+    <div onclick="showPlumSun()" id="sunPlum" class="sunPlum"></div>
+    <div onclick="showBlueSun()" id="sunBlue" class="sunBlue"></div>
+    <div onclick="showGoldenSun()" id="sunGolden" class="sunGolden"></div>
+    <div onclick="showSilverSun()" id="sunSilver" class="sunSilver"></div>
+    
+    <script>
+        // Code For Cursor
+        const innerCircle = document.querySelector("[inner-circle]");
+        const outerCircle = document.querySelector("[outer-circle]");
+        
+        window.addEventListener("mousemove", (e) =>{
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            outerCircle.style.left = `${posX}px`;
+            outerCircle.style.top = `${posY}px`;
+
+            innerCircle.style.left = `${posX}px`;
+            innerCircle.style.top = `${posY}px`;
+
+        });
+
+        const showWhiteSun = ()=>{
+            const sunWhite = document.getElementById("sunWhite");
+            sunWhite.style.boxShadow = "0px 0px 50px 10px whitesmoke";
+        }
+        const showGreenSun = ()=>{
+            const sunGreen = document.getElementById("sunGreen");
+            sunGreen.style.boxShadow = "0px 0px 50px 10px green";
+        }
+        const showRedSun = ()=>{
+            const sunRed = document.getElementById("sunRed");
+            sunRed.style.boxShadow = "0px 0px 50px 10px red";
+        }
+        const showPlumSun = ()=>{
+            const sunPlum = document.getElementById("sunPlum");
+            sunPlum.style.boxShadow = "0px 0px 50px 10px plum";
+        }
+        const showBlueSun = ()=>{
+            const sunBlue = document.getElementById("sunBlue");
+            sunBlue.style.boxShadow = "0px 0px 50px 10px blue";
+        }
+        const showGoldenSun = ()=>{
+            const sunGolden = document.getElementById("sunGolden");
+            sunGolden.style.boxShadow = "0px 0px 50px 10px gold";
+        }
+        const showSilverSun = ()=>{
+            const sunSilver = document.getElementById("sunSilver");
+            sunSilver.style.boxShadow = "0px 0px 50px 10px silver";
+        }
+
+    </script>
+</body>
+</html>
